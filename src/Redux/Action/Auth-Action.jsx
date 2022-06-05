@@ -37,7 +37,8 @@ export const postRegister = (data) => async (dispatch) => {
 
 export const postLogin = (data) => async (dispatch) => {
   try {
-    const { username, password, email } = data;
+    const { username, password, email, history } = data;
+    const url = history.location.search.replace("?", "/");
     const Data = {
       username: username,
       password: password,

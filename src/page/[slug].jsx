@@ -114,9 +114,12 @@ const DetailStory = () => {
                 src={`${API}/storyImages/${detailStory?.data?.image}`}
               />
             </div>
+            <h1 className="font-semibold lg:text-[2.3rem] xl:text-[2.3rem] sm:text-[1.5rem] md:text-[1.5rem] text-[1.5rem] dark:text-white text-center">
+              {detailStory.data?.title}
+            </h1>
             <ReactMarkdown
               children={detailStory?.data?.content}
-              className="dark:text-white"
+              className="dark:text-white mt-4"
               components={{
                 code({ node, inline, className, children, ...props }) {
                   const match = /language-(\w+)/.exec(className || "");
@@ -187,7 +190,16 @@ const DetailStory = () => {
                 <p className="dark:text-white">{comment?.length}</p>
               </div>
             </div>
-            <Comments />
+            {data._id ? (
+              <Comments />
+            ) : (
+              <Link
+                className="text-blue-500 text-[1.2rem] my-3"
+                to={`/login?blogdetail/${slug}`}
+              >
+                Please Login
+              </Link>
+            )}
             <CommentItems />
           </>
         )}

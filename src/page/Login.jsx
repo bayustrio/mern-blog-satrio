@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { Toaster } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { handleOnChange, postLogin } from "../Redux/Action/Auth-Action";
-
+import { Link, useNavigate } from "react-router-dom";
+import {
+  GetDataSlug,
+  handleOnChange,
+  postLogin,
+} from "../Redux/Action/Auth-Action";
+import { createBrowserHistory } from "history";
+import { postData } from "../utils/FetchData";
 const Login = () => {
+  const history = createBrowserHistory();
+  const navigate = useNavigate();
+  // console.log(history);
   const dispatch = useDispatch();
   const data = useSelector((state) => state.Auth.dataAuth);
 
@@ -12,12 +20,28 @@ const Login = () => {
   const [showConfPass, setConfPass] = useState(false);
 
   const { username, password, confirmPassword, email } = data;
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) return alert("Confirm password not same");
-    const data = { username, password, email };
-    dispatch(postLogin(data));
+    const data = { history, username, password, email };
+    try {
+      const { username, password, email, history } = data;
+      const url = history.location.search.replace("?", "/");
+      const Data = {
+        username: username,
+        password: password,
+        email: email,
+      };
+      const res = await postData("auth/login", Data);
+      if (url) {
+        navigate(`${url}`);
+      }
+      localStorage.setItem("token", res.data.token);
+      dispatch(GetDataSlug());
+    } catch (err) {
+      toast.error(err.response.data.error);
+    }
+    // dispatch(postLogin(data));
   };
   return (
     <>
