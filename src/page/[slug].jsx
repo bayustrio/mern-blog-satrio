@@ -13,11 +13,10 @@ import { a11yDark as dracula } from "react-syntax-highlighter/dist/esm/styles/pr
 import "prismjs/themes/prism-tomorrow.css";
 import ReactMarkdown from "react-markdown";
 import Comments from "../components/Comments";
-
 //  STYLE
 import "./slug.css";
 import CommentItems from "../components/Comment/CommentItems";
-import { Toaster } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import StorySkeleton from "../components/Skeleton/StorySkeleton";
 const DetailStory = () => {
   const { slug } = useParams();
@@ -39,7 +38,12 @@ const DetailStory = () => {
   //   HANDLE LIKE
   const handleLike = (e) => {
     e.preventDefault();
-    dispatch(LikeStory({ data, slug }));
+    const token = localStorage.getItem("token");
+    if (token) {
+      dispatch(LikeStory({ data, slug }));
+    } else {
+      toast.error("Please Login");
+    }
   };
 
   const handleDelete = (e) => {
