@@ -1,0 +1,98 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.skel {
+  padding: 30px;
+  border-radius: 20px;
+  width: 100%;
+}
+
+.skel-user {
+  display: flex;
+  align-items: center;
+}
+
+.skel-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  background-color: rgb(120, 122, 121,.3);
+}
+
+.skel-info {
+  margin-left: 20px;
+}
+
+.skel-info > .skel-rect:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.skel-thumbnail {
+  width:100%;
+  height:30vh;
+}
+
+.skel-rect {
+  --w: 150px;
+  --h: 15px;
+  --a: .2;
+  width: var(--w);
+  height: var(--h);
+  background-color: rgb(120, 122, 121,var(--a));
+
+  border-radius: 30px;
+}
+
+.skel-rect-sm {
+  --w: 100px;
+  --h: 10px;
+  --a: .1;
+}
+
+.skel-content {
+  margin-top: 20px;
+}
+
+.skel-content .skel-rect {
+  --w: 100%;
+  --h: 10px;
+  --a: .15;
+}
+
+.skel-content .skel-rect:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.skel-thumbnail {
+  --w: 100%;
+  --h: 10px;
+  --a: .15;
+  width:100%;
+  height:80vh;  
+  margin-bottom:7px;
+  background-color: rgb(120, 122, 121,var(--a));
+
+  border-radius: 10px;
+}
+
+.skel-content .skel-rect:nth-child(2) {
+  --w: 80%;
+}
+
+.skel-content .skel-rect:nth-child(3) {
+  --w: 30%;
+}
+
+.skel-anim {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: .5; }
+  100% { opacity: 1; }
+}

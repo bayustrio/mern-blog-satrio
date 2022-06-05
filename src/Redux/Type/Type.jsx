@@ -1,0 +1,18 @@
+export const HANDLE_CHANGE = "HANDLE_CHANGE";
+export const CREATE_ACCOUNT = "CREATE_ACCOUNT";
+
+export const GET_DATA_BLOG = "GET_DATA_BLOG";
+export const GET_DATA_SLUG = "GET_DATA_SLUG";
+export const GET_DETAIL_STORY = "GET_DETAIL_STORY";
+export const GET_SLUG_FOR_LIKE = "GET_SLUG_FOR_LIKE";
+
+export const GET_DATA_COMMENTS = "GET_DATA_COMMENTS";
+export const CREATE_COMMENT = "CREATE_COMMENT";
+export const DELETE_COMMENT = "DELETE_COMMENT";
+
+//  USER;
+export const GET_DATA_USER = "GET_DATA_USER";
+
+
+// LOADING
+export const ALERT = "ALERT"

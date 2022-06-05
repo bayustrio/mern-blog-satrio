@@ -1,0 +1,10 @@
+.slide-comment {
+  position: absolute;
+  right: 25px;
+  background: red;
+  top: 0;
+  bottom: 0;
+  width: 30%;
+  height: 100vh;
+  /* background: red; */
+}
